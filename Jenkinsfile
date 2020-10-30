@@ -1,19 +1,23 @@
 pipeline {
     agent any
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "maven"
+    }
     stages {
         stage('---clean---') {
             steps {
-                sh "/opt/maven/bin/mvn clean"
+                sh "mvn clean"
             }
         }
         stage('--test--') {
             steps {
-                sh "/opt/maven/bin/mvn test"
+                sh "mvn test"
             }
         }
         stage('--package--') {
             steps {
-                sh "/opt/maven/bin/mvn package"
+                sh "mvn package"
             }
         }
     }
