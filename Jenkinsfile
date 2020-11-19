@@ -9,7 +9,7 @@ pipeline {
          stage('Git CheckOut') {
             steps {
             gitCheckout(
-                branch: "master",
+                branch: "feature-1",
                 url: "https://github.com/mcalik77/my-app.git"
             )
             }
