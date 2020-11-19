@@ -1,3 +1,6 @@
+library identifier: 'jenkins-library', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: '', 
+remote: 'https://github.com/mcalik77/jenkins-shared-library.git', traits: [gitBranchDiscovery()]])
+
 pipeline {
     agent any
     tools {
@@ -5,6 +8,15 @@ pipeline {
         maven "maven"
     }
     stages {
+         stage('Git CheckOut') {
+            steps {
+            gitCheckout(
+                branch: "master",
+                url: "https://github.com/mcalik77/my-app.git"
+            )
+            }
+        }
+        
         stage('---clean---') {
             steps {
                 sh "mvn clean"
